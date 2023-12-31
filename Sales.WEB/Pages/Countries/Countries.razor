@@ -1,0 +1,87 @@
+﻿@page "/countries"
+@inject IRepository repository
+
+<h3>Paises</h3>
+@if (CountriesList is null)
+{
+	<p>Cargando...</p>
+} else
+{
+	<div class="countries-container">
+		@foreach (var country in CountriesList)
+		{
+			<div class="country-item">
+				<h4>@country.Name</h4>
+				<button class="btn btn-save">Editar</button>
+				<button class="btn btn-cancel">Borrar</button>
+			</div>
+		}
+	</div>
+}
+
+<style>
+	.countries-container {
+		display: flex;
+		flex-flow: row wrap;
+		width: 80%;
+		height: 500px;
+		background-color: #999;
+		border-radius: 10px;
+		margin: auto;
+		gap: 10px;
+		justify-content: center;
+	}
+
+	.country-item {
+		width: 150px;
+		height: 150px;
+		background-color: #000;
+		text-align: center;
+		border-radius: 8px;
+		color: #fff;
+	}
+
+	.btn {
+		padding: 5px 10px;
+		border-radius: 7px;
+		outline: none;
+		border: 1px solid #555;
+		background-color: #ddd;
+		display: block;
+		width: 60%;
+		margin: 5px auto;
+		cursor: pointer;
+		font-size: 14px;
+	}
+
+	.btn-save {
+		background-color: #15d;
+		border: 1px solid #12d;
+	}
+
+	.btn-save:hover {
+		background-color: #13d;
+		border-color: #11d;
+	}
+
+	.btn-cancel {
+		background-color: #900;
+		border: 1px solid #700;
+	}
+
+	.btn-cancel:hover {
+		background-color: #800;
+		border: 1px solid #600;
+	}
+
+</style>
+
+@code {
+	public List<Country>? CountriesList { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		var httpResponse = await repository.Get<List<Country>>("/api/countries");
+		CountriesList = httpResponse.Response;
+	}
+}
