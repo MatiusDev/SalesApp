@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataContext>(a => a.UseSqlServer("name=LocalConnection"));
+builder.Services.AddDbContext<DataContext>(db => db.UseSqlServer("name=LocalConnection"));
 
 var app = builder.Build();
 

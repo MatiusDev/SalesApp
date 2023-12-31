@@ -17,30 +17,23 @@ namespace Sales.API.Controllers
 		}
 
 		[HttpGet]
-		public async Task<ActionResult> GetAllAsync()
+		public async Task<ActionResult<IEnumerable<Country>>> GetAllAsync()
 		{
 			return Ok(await _context.Countries.ToListAsync());
 		}
 
-		/*[HttpGet]
-		public async Task<ActionResult> GetByIdAsync(int id)
+		[HttpGet("{id}")]
+		public async Task<ActionResult<Country>> GetByIdAsync(int id)
 		{
 			return Ok(await _context.Countries.FindAsync(id));
-		}*/
+		}
 
 		[HttpPost]
-		public async Task<ActionResult> PostAsync(Country country)
+		public async Task<ActionResult<Country>> PostAsync(Country country)
 		{
 			_context.Add(country);
-			try
-			{
-				var res = await _context.SaveChangesAsync();
-				Console.Out.WriteLine("Prueba de consola: " + res);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Ocurrió un error: {ex.Message}");
-			}
+			await _context.SaveChangesAsync();
+
 			return Ok(country);
 		}
 	}
