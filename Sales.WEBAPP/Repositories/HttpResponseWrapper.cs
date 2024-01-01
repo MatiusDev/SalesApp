@@ -20,7 +20,7 @@ namespace Sales.WEBAPP.Repositories
 		#endregion
 
 		#region Methods
-		public async Task<string?> GetErrorMessage()
+		public async Task<string?> GetErrorMessageAsync()
 		{
 			if (!Error) return null;
 
