@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace Sales.WEBAPP.Repositories
+namespace Sales.WEB.Repositories
 {
 	public class Repository : IRepository
 	{

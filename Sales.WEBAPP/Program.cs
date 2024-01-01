@@ -1,8 +1,8 @@
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Sales.WEBAPP.Repositories;
-using Sales.WEBAPP;
+using Sales.WEB.Repositories;
+using Sales.WEB;
 using System.Text.Json;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

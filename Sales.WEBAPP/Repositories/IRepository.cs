@@ -1,4 +1,4 @@
-﻿namespace Sales.WEBAPP.Repositories
+﻿namespace Sales.WEB.Repositories
 {
 	public interface IRepository
 	{
